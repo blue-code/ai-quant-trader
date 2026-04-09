@@ -1,0 +1,29 @@
+# LLM
+anthropic>=0.40.0
+openai>=1.50.0
+
+# 데이터
+yfinance>=0.2.40
+pykrx>=1.0.45
+pandas>=2.1.0
+numpy>=1.26.0
+
+# 설정
+omegaconf>=2.3.0
+pyyaml>=6.0
+
+# 시각화
+matplotlib>=3.8.0
+plotly>=5.18.0
+seaborn>=0.13.0
+
+# 유틸
+tqdm>=4.66.0
+rich>=13.7.0
+click>=8.1.0
+backoff>=2.2.1
+jinja2>=3.1.0
+
+# 테스트
+pytest>=8.0.0
+pytest-asyncio>=0.23.0

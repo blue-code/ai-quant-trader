@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# 가상환경
+venv/
+.venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# 데이터 캐시
+data_cache/
+*.parquet
+
+# 결과물
+results/
+reports/
+*.log
+
+# 환경변수
+.env
+.env.local
+
+# 시스템
+.DS_Store
+Thumbs.db
+
+# Jupyter
+.ipynb_checkpoints/

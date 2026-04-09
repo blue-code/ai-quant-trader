@@ -1,0 +1,78 @@
+# AI Quant Trader 기본 설정
+
+# LLM 설정
+llm:
+  provider: "anthropic"  # anthropic | openai
+  model: "claude-sonnet-4-20250514"
+  temperature: 0.7
+  max_tokens: 4096
+
+# 데이터 설정
+data:
+  market: "kr"  # kr (한국) | us (미국)
+  universe: "kospi200"  # kospi200 | sp500 | custom
+  frequency: "daily"  # daily | hourly | minute
+  lookback_years: 5
+
+# 트레이딩 설정
+trading:
+  max_position_pct: 0.05  # 종목당 최대 비중 5%
+  max_positions: 20  # 최대 보유 종목 수
+  max_leverage: 1.0  # 최대 레버리지
+  slippage_bps: 5  # 슬리피지 (bps)
+  commission_bps: 10  # 수수료 (bps)
+  initial_capital: 100000000  # 초기 자본 1억원
+
+# 백테스트 설정
+backtest:
+  start_date: "2020-01-01"
+  end_date: "2024-12-31"
+  validation_splits: 5  # Walk-Forward 분할 수
+  out_of_sample_pct: 0.2  # OOS 비율
+  benchmark: "KODEX 200"  # 벤치마크
+
+# 메트릭 설정
+metrics:
+  primary: "sharpe_ratio"
+  secondary:
+    - "total_return"
+    - "max_drawdown"
+    - "win_rate"
+    - "profit_factor"
+  thresholds:
+    min_sharpe: 0.5
+    max_drawdown: -0.20  # -20%
+    min_win_rate: 0.45
+
+# 트리 탐색 설정 (AI-Scientist-v2 방식)
+treesearch:
+  max_nodes: 150
+  num_workers: 4
+  stages:
+    - name: "기본 전략"
+      num_iterations: 20
+      description: "기본 팩터 조합으로 초기 전략 생성"
+    - name: "파라미터 최적화"
+      num_iterations: 12
+      description: "진입/청산 임계값, 룩백 기간 최적화"
+    - name: "팩터 엔지니어링"
+      num_iterations: 12
+      description: "신호 결합, 앙상블, 매크로 지표 통합"
+    - name: "로버스트니스 검증"
+      num_iterations: 18
+      description: "Walk-Forward 검증, 스트레스 테스트"
+  debug_prob: 0.5
+  search_depth: 3
+
+# 실거래 설정
+execution:
+  broker: "kis"  # kis (한국투자증권) | ib (Interactive Brokers)
+  mode: "paper"  # paper (모의) | live (실거래)
+  order_type: "market"  # market | limit
+  risk_check: true
+
+# 리포트 설정
+reporting:
+  output_dir: "./reports"
+  format: "html"  # html | pdf
+  include_plots: true
