@@ -1,9 +1,13 @@
 # AI Quant Trader 기본 설정
 
 # LLM 설정
+# provider 옵션:
+#   codex    - 로컬 Codex CLI의 OAuth 토큰 사용 (API 키 불필요, 기본값)
+#   anthropic - Anthropic API (ANTHROPIC_API_KEY 환경변수 필요)
+#   openai   - OpenAI API (OPENAI_API_KEY 환경변수 필요)
 llm:
-  provider: "anthropic"  # anthropic | openai
-  model: "claude-sonnet-4-20250514"
+  provider: "codex"
+  model: ""  # 빈 문자열이면 Codex 설정의 기본 모델 사용 (현재 gpt-5.4)
   temperature: 0.7
   max_tokens: 4096
 
